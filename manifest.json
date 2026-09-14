@@ -2,7 +2,7 @@
   "name": "NetWerk",
   "short_name": "NetWerk",
   "description": "Quick access to your favorite social media platforms",
-  "start_url": "/",
+  "start_url": "https://kgolaganopoosa.github.io/NetWerk/",
   "display": "standalone",
   "background_color": "#2563eb",
   "theme_color": "#2563eb",
