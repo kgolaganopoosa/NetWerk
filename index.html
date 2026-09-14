@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>NetWerk – Social Media Hub</title>
+  <meta name="description" content="NetWerk - Quick access to your favorite social media platforms.">
+  <meta name="theme-color" content="#2563eb">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
+  <meta name="apple-mobile-web-app-title" content="NetWerk">
+  <meta name="mobile-web-app-capable" content="yes">
+  <link rel="manifest" href="manifest.json">
+  <link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="192x192" href="icons/icon-192.png">
+  <link rel="icon" type="image/png" sizes="512x512" href="icons/icon-512.png">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <style>
+    :root {
+      --bg: #f5f6f8;
+      --card-bg: #ffffff;
+      --text: #111111;
+      --text-muted: #5c5c66;
+      --border: #e6e7eb;
+      --facebook: #1877f2;
+      --youtube: #ff0000;
+      --wechat: #07c160;
+      --telegram: #0088cc;
+      --radius: 16px;
+      --shadow: 0 8px 24px rgba(17, 17, 17, 0.08);
+      --brand: #2563eb;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      min-height: 100vh;
+      line-height: 1.5;
+    }
+    .container {
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 2rem 1.25rem;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+    }
+    header { text-align: center; margin-bottom: 2.5rem; padding-top: 1rem; }
+    .logo {
+      font-size: 2.75rem;
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      color: #000000;
+      margin-bottom: 0.35rem;
+    }
+    .tagline { color: var(--text-muted); font-size: 1rem; }
+    .apps-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1rem;
+      flex: 1;
+    }
+    @media (min-width: 560px) {
+      .apps-grid { grid-template-columns: repeat(3, 1fr); gap: 1.25rem; }
+    }
+    .app-card {
+      background: var(--card-bg);
+      border-radius: var(--radius);
+      padding: 1.5rem 1rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-decoration: none;
+      color: inherit;
+      box-shadow: var(--shadow);
+      border: 1px solid var(--border);
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+    .app-card:hover, .app-card:focus-visible {
+      transform: translateY(-4px);
+      box-shadow: 0 12px 28px rgba(17, 17, 17, 0.12);
+      outline: none;
+    }
+    .icon-wrapper {
+      width: 56px; height: 56px; border-radius: 14px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.75rem; margin-bottom: 0.85rem; color: white;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
+    }
+    .facebook .icon-wrapper { background: var(--facebook); }
+    .instagram .icon-wrapper {
+      background: linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888);
+    }
+    .youtube .icon-wrapper { background: var(--youtube); }
+    .tiktok .icon-wrapper { background: #010101; }
+    .tiktok .icon-wrapper i {
+      background: linear-gradient(45deg, #25f4ee, #fe2c55);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      font-size: 1.85rem;
+    }
+    .wechat .icon-wrapper { background: var(--wechat); }
+    .telegram .icon-wrapper { background: var(--telegram); }
+    .app-name { font-weight: 600; font-size: 0.95rem; margin-bottom: 0.6rem; color: #000000; }
+    .open-btn {
+      font-size: 0.8rem; font-weight: 600; padding: 0.35rem 1rem;
+      border-radius: 999px; background: #f0f1f4; color: #333333;
+    }
+    .app-card:hover .open-btn { background: #e4e6eb; color: #000000; }
+    footer {
+      margin-top: 3rem; padding-top: 1.5rem;
+      border-top: 1px solid var(--border); text-align: center;
+    }
+    .footer-links {
+      display: flex; flex-wrap: wrap; justify-content: center;
+      gap: 0.5rem 1.25rem; margin-bottom: 1rem;
+    }
+    .footer-btn {
+      background: none; border: none; color: var(--text-muted);
+      font-size: 0.85rem; cursor: pointer; padding: 0.25rem 0; font-family: inherit;
+    }
+    .footer-btn:hover, .footer-btn:focus-visible { color: #000000; outline: none; }
+    .copyright { font-size: 0.75rem; color: var(--text-muted); }
+    .modal-overlay {
+      position: fixed; inset: 0; background: rgba(0, 0, 0, 0.35);
+      backdrop-filter: blur(4px); display: flex; align-items: center;
+      justify-content: center; z-index: 1000; padding: 1rem;
+    }
+    .modal-overlay.hidden { opacity: 0; pointer-events: none; }
+    .modal {
+      background: #ffffff; border-radius: 20px; max-width: 520px; width: 100%;
+      max-height: 80vh; overflow-y: auto; padding: 1.75rem; position: relative;
+      border: 1px solid var(--border); box-shadow: 0 20px 50px rgba(0, 0, 0, 0.15); color: #111111;
+    }
+    .modal-close {
+      position: absolute; top: 1rem; right: 1rem; background: #f0f1f4; border: none;
+      color: #111111; width: 36px; height: 36px; border-radius: 50%; font-size: 1.4rem;
+      cursor: pointer; display: flex; align-items: center; justify-content: center; line-height: 1;
+    }
+    #modal-title { font-size: 1.35rem; margin-bottom: 1rem; padding-right: 2rem; color: #000000; }
+    .modal-content { color: #44444d; font-size: 0.95rem; line-height: 1.65; }
+    .modal-content p { margin-bottom: 0.9rem; }
+    .modal-content h3 { color: #000000; font-size: 1.05rem; margin: 1.25rem 0 0.5rem; }
+    .install-banner {
+      position: fixed; left: 1rem; right: 1rem; bottom: 1rem; max-width: 420px;
+      margin: 0 auto; background: #ffffff; border: 1px solid var(--border);
+      border-radius: 16px; box-shadow: 0 12px 40px rgba(0, 0, 0, 0.18);
+      padding: 1rem 1.1rem; display: flex; align-items: center; gap: 0.85rem;
+      z-index: 1100; transform: translateY(120%); opacity: 0;
+      transition: transform 0.3s ease, opacity 0.3s ease;
+    }
+    .install-banner.show { transform: translateY(0); opacity: 1; }
+    .install-banner.hidden { display: none; }
+    .install-icon {
+      width: 48px; height: 48px; border-radius: 12px; background: var(--brand);
+      flex-shrink: 0; display: flex; align-items: center; justify-content: center;
+    }
+    .install-icon span {
+      width: 22px; height: 22px; border-radius: 50%; background: #ffffff; display: block;
+    }
+    .install-text { flex: 1; min-width: 0; }
+    .install-text strong { display: block; font-size: 0.95rem; color: #000; margin-bottom: 0.15rem; }
+    .install-text span { font-size: 0.8rem; color: var(--text-muted); }
+    .install-actions { display: flex; flex-direction: column; gap: 0.35rem; flex-shrink: 0; }
+    .install-btn {
+      background: var(--brand); color: #fff; border: none; border-radius: 999px;
+      padding: 0.45rem 0.9rem; font-size: 0.8rem; font-weight: 600;
+      cursor: pointer; font-family: inherit;
+    }
+    .install-btn:hover { filter: brightness(1.05); }
+    .install-dismiss {
+      background: transparent; border: none; color: var(--text-muted);
+      font-size: 0.75rem; cursor: pointer; font-family: inherit; padding: 0.2rem;
+    }
+    .install-dismiss:hover { color: #000; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1 class="logo">NetWerk</h1>
+      <p class="tagline">Your social media, one click away</p>
+    </header>
+    <main class="apps-grid">
+      <a href="https://www.facebook.com/" target="_blank" rel="noopener noreferrer" class="app-card facebook">
+        <div class="icon-wrapper"><i class="fab fa-facebook-f"></i></div>
+        <span class="app-name">Facebook</span>
+        <span class="open-btn">Open</span>
+      </a>
+      <a href="https://www.instagram.com/" target="_blank" rel="noopener noreferrer" class="app-card instagram">
+        <div class="icon-wrapper"><i class="fab fa-instagram"></i></div>
+        <span class="app-name">Instagram</span>
+        <span class="open-btn">Open</span>
+      </a>
+      <a href="https://www.youtube.com/" target="_blank" rel="noopener noreferrer" class="app-card youtube">
+        <div class="icon-wrapper"><i class="fab fa-youtube"></i></div>
+        <span class="app-name">YouTube</span>
+        <span class="open-btn">Open</span>
+      </a>
+      <a href="https://www.tiktok.com/" target="_blank" rel="noopener noreferrer" class="app-card tiktok">
+        <div class="icon-wrapper"><i class="fab fa-tiktok"></i></div>
+        <span class="app-name">TikTok</span>
+        <span class="open-btn">Open</span>
+      </a>
+      <a href="https://www.wechat.com/" target="_blank" rel="noopener noreferrer" class="app-card wechat">
+        <div class="icon-wrapper"><i class="fab fa-weixin"></i></div>
+        <span class="app-name">WeChat</span>
+        <span class="open-btn">Open</span>
+      </a>
+      <a href="https://web.telegram.org/" target="_blank" rel="noopener noreferrer" class="app-card telegram">
+        <div class="icon-wrapper"><i class="fab fa-telegram-plane"></i></div>
+        <span class="app-name">Telegram</span>
+        <span class="open-btn">Open</span>
+      </a>
+    </main>
+    <footer>
+      <div class="footer-links">
+        <button class="footer-btn" data-modal="privacy">Privacy Policy</button>
+        <button class="footer-btn" data-modal="terms-use">Terms of Use</button>
+        <button class="footer-btn" data-modal="terms-conditions">Terms &amp; Conditions</button>
+      </div>
+      <p class="copyright">&copy; 2026 NetWerk. All rights reserved.</p>
+    </footer>
+  </div>
+
+  <div id="modal-overlay" class="modal-overlay hidden">
+    <div class="modal">
+      <button class="modal-close" aria-label="Close">&times;</button>
+      <h2 id="modal-title"></h2>
+      <div id="modal-content" class="modal-content"></div>
+    </div>
+  </div>
+
+  <div id="install-banner" class="install-banner hidden" role="dialog" aria-label="Install NetWerk">
+    <div class="install-icon" aria-hidden="true"><span></span></div>
+    <div class="install-text">
+      <strong>Install NetWerk</strong>
+      <span>Add to your home screen for quick access</span>
+    </div>
+    <div class="install-actions">
+      <button type="button" class="install-btn" id="install-accept">Install</button>
+      <button type="button" class="install-dismiss" id="install-dismiss">Not now</button>
+    </div>
+  </div>
+
+  <script>
+    const modalData = {
+      privacy: {
+        title: "Privacy Policy",
+        content: "<p>Last updated: September 14, 2026</p><p>NetWerk is a simple directory of external social media links. We do not require accounts and do not collect personal information such as names, email addresses, or login credentials.</p><h3>Third-Party Links</h3><p>When you click Open on any platform, you leave NetWerk and are subject to that platform's own privacy policy and terms.</p><h3>Cookies</h3><p>We may use essential cookies or local storage for basic functionality. We do not use tracking cookies for advertising.</p>"
+      },
+      "terms-use": {
+        title: "Terms of Use",
+        content: "<p>Last updated: September 14, 2026</p><p>By using NetWerk you agree to use it only for lawful purposes. NetWerk is an independent directory and is not affiliated with Meta, Google, ByteDance, Tencent, or Telegram. The service is provided as is.</p>"
+      },
+      "terms-conditions": {
+        title: "Terms & Conditions",
+        content: "<p>Last updated: September 14, 2026</p><p>Platform logos and names are trademarks of their owners and are used for identification only. NetWerk is not liable for content or practices on third-party platforms you open from this page.</p>"
+      }
+    };
+
+    const overlay = document.getElementById("modal-overlay");
+    const modalTitle = document.getElementById("modal-title");
+    const modalContent = document.getElementById("modal-content");
+
+    function openModal(key) {
+      const data = modalData[key];
+      if (!data) return;
+      modalTitle.textContent = data.title;
+      modalContent.innerHTML = data.content;
+      overlay.classList.remove("hidden");
+      document.body.style.overflow = "hidden";
+    }
+    function closeModal() {
+      overlay.classList.add("hidden");
+      document.body.style.overflow = "";
+    }
+    document.querySelectorAll(".footer-btn").forEach(function (btn) {
+      btn.addEventListener("click", function () { openModal(btn.dataset.modal); });
+    });
+    document.querySelector(".modal-close").addEventListener("click", closeModal);
+    overlay.addEventListener("click", function (e) { if (e.target === overlay) closeModal(); });
+    document.addEventListener("keydown", function (e) {
+      if (e.key === "Escape" && !overlay.classList.contains("hidden")) closeModal();
+    });
+
+    if ("serviceWorker" in navigator) {
+      window.addEventListener("load", function () {
+        navigator.serviceWorker.register("sw.js").catch(function () {});
+      });
+    }
+
+    var deferredPrompt = null;
+    var installBanner = document.getElementById("install-banner");
+    var installAccept = document.getElementById("install-accept");
+    var installDismiss = document.getElementById("install-dismiss");
+    var DISMISS_KEY = "netwerk-install-dismissed";
+
+    function isStandalone() {
+      return window.matchMedia("(display-mode: standalone)").matches ||
+        window.navigator.standalone === true;
+    }
+    function showInstallBanner() {
+      if (isStandalone()) return;
+      if (localStorage.getItem(DISMISS_KEY) === "1") return;
+      installBanner.classList.remove("hidden");
+      requestAnimationFrame(function () { installBanner.classList.add("show"); });
+    }
+    function hideInstallBanner(permanent) {
+      installBanner.classList.remove("show");
+      setTimeout(function () { installBanner.classList.add("hidden"); }, 300);
+      if (permanent) localStorage.setItem(DISMISS_KEY, "1");
+    }
+
+    window.addEventListener("beforeinstallprompt", function (e) {
+      e.preventDefault();
+      deferredPrompt = e;
+      setTimeout(showInstallBanner, 1200);
+    });
+
+    window.addEventListener("load", function () {
+      setTimeout(function () {
+        if (deferredPrompt || isStandalone()) return;
+        var isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent) ||
+          (navigator.platform === "MacIntel" && navigator.maxTouchPoints > 1);
+        if (isIOS && !localStorage.getItem(DISMISS_KEY)) {
+          document.querySelector(".install-text span").textContent =
+            "Tap Share, then Add to Home Screen";
+          installAccept.style.display = "none";
+          showInstallBanner();
+        }
+      }, 2000);
+    });
+
+    installAccept.addEventListener("click", function () {
+      if (!deferredPrompt) return;
+      deferredPrompt.prompt();
+      deferredPrompt.userChoice.then(function () {
+        deferredPrompt = null;
+        hideInstallBanner(true);
+      });
+    });
+    installDismiss.addEventListener("click", function () { hideInstallBanner(true); });
+    window.addEventListener("appinstalled", function () {
+      deferredPrompt = null;
+      hideInstallBanner(true);
+    });
+  </script>
+</body>
+</html>
