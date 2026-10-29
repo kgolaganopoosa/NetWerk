@@ -1,0 +1,581 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>NetWerk – Download Social Media Hub APK</title>
+  <meta name="description" content="Download NetWerk APK for Android - Quick access to all your favorite social media platforms in one lightweight app.">
+  <meta name="theme-color" content="#0d0f18">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="NetWerk">
+  <meta name="mobile-web-app-capable" content="yes">
+  
+  <!-- Fonts & Icons -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  
+  <style>
+    :root {
+      --bg: #090a0f;
+      --card-bg: rgba(255, 255, 255, 0.03);
+      --card-border: rgba(255, 255, 255, 0.08);
+      --card-hover-bg: rgba(255, 255, 255, 0.06);
+      --card-hover-border: rgba(255, 255, 255, 0.18);
+      --text: #f3f4f6;
+      --text-muted: #9ca3af;
+      --brand: #6366f1;
+      --brand-hover: #4f46e5;
+      --brand-glow: rgba(99, 102, 241, 0.4);
+      --accent-green: #10b981;
+      
+      --facebook: #1877f2;
+      --youtube: #ff0000;
+      --wechat: #07c160;
+      --telegram: #0088cc;
+      
+      --radius: 24px;
+      --shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      min-height: 100vh;
+      line-height: 1.6;
+      overflow-x: hidden;
+      position: relative;
+    }
+
+    /* Background Ambient Glows */
+    body::before, body::after {
+      content: '';
+      position: absolute;
+      width: 500px;
+      height: 500px;
+      border-radius: 50%;
+      filter: blur(140px);
+      z-index: -1;
+      opacity: 0.22;
+      pointer-events: none;
+    }
+    body::before {
+      top: -100px;
+      left: -100px;
+      background: #4f46e5;
+    }
+    body::after {
+      bottom: -100px;
+      right: -100px;
+      background: #ec4899;
+    }
+
+    .container {
+      max-width: 840px;
+      margin: 0 auto;
+      padding: 3rem 1.5rem;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+    }
+
+    /* Header & Hero Section */
+    header {
+      text-align: center;
+      margin-bottom: 3rem;
+      padding-top: 1rem;
+    }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.35rem 1rem;
+      border-radius: 999px;
+      background: rgba(99, 102, 241, 0.1);
+      border: 1px solid rgba(99, 102, 241, 0.3);
+      color: #a5b4fc;
+      font-size: 0.825rem;
+      font-weight: 600;
+      margin-bottom: 1.25rem;
+    }
+
+    .logo {
+      font-size: 3.5rem;
+      font-weight: 800;
+      letter-spacing: -0.04em;
+      background: linear-gradient(135deg, #ffffff 30%, #9ca3af 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      margin-bottom: 0.5rem;
+    }
+
+    .tagline {
+      color: var(--text-muted);
+      font-size: 1.15rem;
+      font-weight: 400;
+      max-width: 540px;
+      margin: 0 auto 2rem auto;
+    }
+
+    /* Download Hero Card */
+    .hero-download-card {
+      background: rgba(255, 255, 255, 0.04);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border: 1px solid var(--card-border);
+      border-radius: 28px;
+      padding: 2.5rem 2rem;
+      text-align: center;
+      box-shadow: var(--shadow);
+      margin-bottom: 3.5rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-download-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 3px;
+      background: linear-gradient(90deg, #6366f1, #ec4899, #10b981);
+    }
+
+    .apk-meta {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 1.5rem;
+      font-size: 0.875rem;
+      color: var(--text-muted);
+      margin-bottom: 1.75rem;
+    }
+
+    .apk-meta-item {
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+
+    .apk-meta-item i {
+      color: #a5b4fc;
+    }
+
+    .download-primary-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.75rem;
+      background: linear-gradient(135deg, var(--brand), var(--brand-hover));
+      color: #ffffff;
+      font-size: 1.1rem;
+      font-weight: 700;
+      padding: 1.1rem 2.5rem;
+      border-radius: 999px;
+      text-decoration: none;
+      box-shadow: 0 10px 30px var(--brand-glow);
+      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .download-primary-btn:hover {
+      transform: translateY(-3px) scale(1.02);
+      box-shadow: 0 15px 35px var(--brand-glow);
+      background: linear-gradient(135deg, #4f46e5, #4338ca);
+    }
+
+    .section-title {
+      font-size: 1.35rem;
+      font-weight: 700;
+      margin-bottom: 1.5rem;
+      letter-spacing: -0.02em;
+      color: #ffffff;
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+    }
+
+    /* Apps Grid */
+    .apps-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1.25rem;
+      margin-bottom: 3.5rem;
+    }
+
+    @media (min-width: 580px) {
+      .apps-grid {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 1.5rem;
+      }
+    }
+
+    .app-card {
+      background: var(--card-bg);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border: 1px solid var(--card-border);
+      border-radius: var(--radius);
+      padding: 1.85rem 1.25rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-decoration: none;
+      color: inherit;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+      position: relative;
+    }
+
+    .app-card:hover, .app-card:focus-visible {
+      transform: translateY(-6px);
+      background: var(--card-hover-bg);
+      border-color: var(--card-hover-border);
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+      outline: none;
+    }
+
+    .icon-wrapper {
+      width: 64px;
+      height: 64px;
+      border-radius: 18px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.85rem;
+      margin-bottom: 1rem;
+      color: white;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+      transition: transform 0.3s ease;
+    }
+
+    .app-card:hover .icon-wrapper {
+      transform: scale(1.08);
+    }
+
+    .facebook .icon-wrapper { background: var(--facebook); }
+    .instagram .icon-wrapper {
+      background: linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888);
+    }
+    .youtube .icon-wrapper { background: var(--youtube); }
+    .tiktok .icon-wrapper { background: #121212; border: 1px solid rgba(255,255,255,0.1); }
+    .tiktok .icon-wrapper i {
+      background: linear-gradient(45deg, #25f4ee, #fe2c55);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .wechat .icon-wrapper { background: var(--wechat); }
+    .telegram .icon-wrapper { background: var(--telegram); }
+
+    .app-name {
+      font-weight: 600;
+      font-size: 1.05rem;
+      margin-bottom: 0.75rem;
+      color: var(--text);
+    }
+
+    .open-btn {
+      font-size: 0.75rem;
+      font-weight: 600;
+      padding: 0.4rem 1.1rem;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.06);
+      color: var(--text-muted);
+      border: 1px solid rgba(255, 255, 255, 0.04);
+      transition: all 0.2s ease;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    .app-card:hover .open-btn {
+      background: #ffffff;
+      color: #000000;
+    }
+
+    /* Installation Guide Section */
+    .guide-section {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: var(--radius);
+      padding: 2rem;
+      margin-bottom: 3.5rem;
+    }
+
+    .steps-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1.25rem;
+      margin-top: 1.25rem;
+    }
+
+    @media (min-width: 600px) {
+      .steps-grid {
+        grid-template-columns: repeat(3, 1fr);
+      }
+    }
+
+    .step-card {
+      background: rgba(255, 255, 255, 0.02);
+      border: 1px solid rgba(255, 255, 255, 0.05);
+      border-radius: 16px;
+      padding: 1.25rem;
+    }
+
+    .step-number {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      background: rgba(99, 102, 241, 0.2);
+      color: #a5b4fc;
+      font-weight: 700;
+      font-size: 0.9rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 0.75rem;
+    }
+
+    .step-title {
+      font-size: 0.95rem;
+      font-weight: 600;
+      color: #ffffff;
+      margin-bottom: 0.35rem;
+    }
+
+    .step-desc {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      line-height: 1.5;
+    }
+
+    footer {
+      margin-top: auto;
+      padding-top: 2rem;
+      border-top: 1px solid var(--card-border);
+      text-align: center;
+    }
+
+    .footer-links {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 0.75rem 1.5rem;
+      margin-bottom: 1rem;
+    }
+
+    .footer-btn {
+      background: none;
+      border: none;
+      color: var(--text-muted);
+      font-size: 0.85rem;
+      cursor: pointer;
+      padding: 0.25rem 0;
+      font-family: inherit;
+      transition: color 0.2s ease;
+    }
+
+    .footer-btn:hover, .footer-btn:focus-visible {
+      color: #ffffff;
+      outline: none;
+    }
+
+    .copyright {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      opacity: 0.7;
+    }
+
+    /* Modal Overlay */
+    .modal-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(5, 6, 10, 0.8);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 1000;
+      padding: 1rem;
+      transition: opacity 0.3s ease;
+    }
+
+    .modal-overlay.hidden {
+      opacity: 0;
+      pointer-events: none;
+    }
+
+    .modal {
+      background: #12151f;
+      border-radius: 28px;
+      max-width: 540px;
+      width: 100%;
+      max-height: 80vh;
+      overflow-y: auto;
+      padding: 2.25rem;
+      position: relative;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      box-shadow: var(--shadow);
+      color: var(--text);
+    }
+
+    .modal-close {
+      position: absolute;
+      top: 1.25rem;
+      right: 1.25rem;
+      background: rgba(255, 255, 255, 0.06);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      color: var(--text);
+      width: 38px;
+      height: 38px;
+      border-radius: 50%;
+      font-size: 1.2rem;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background 0.2s ease;
+    }
+
+    .modal-close:hover {
+      background: rgba(255, 255, 255, 0.12);
+    }
+
+    #modal-title {
+      font-size: 1.5rem;
+      font-weight: 700;
+      margin-bottom: 1rem;
+      padding-right: 2.5rem;
+      color: #ffffff;
+    }
+
+    .modal-content {
+      color: var(--text-muted);
+      font-size: 0.95rem;
+      line-height: 1.7;
+    }
+
+    .modal-content p { margin-bottom: 1rem; }
+    .modal-content h3 {
+      color: #ffffff;
+      font-size: 1.1rem;
+      font-weight: 600;
+      margin: 1.5rem 0 0.5rem;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <div class="badge"><i class="fa-solid fa-mobile-screen"></i> Android App Available</div>
+      <h1 class="logo">NetWerk</h1>
+      <p class="tagline">Your all-in-one social media hub. Access your favorite platforms in one place or download our native Android app.</p>
+    </header>
+
+    <!-- APK Download Hero Card -->
+    <section class="hero-download-card">
+      <div class="apk-meta">
+        <span class="apk-meta-item"><i class="fa-solid fa-code-branch"></i> Version 1.0.0</span>
+        <span class="apk-meta-item"><i class="fa-solid fa-hard-drive"></i> ~4.5 MB</span>
+        <span class="apk-meta-item"><i class="fa-brands fa-android"></i> Android 7.0+</span>
+        <span class="apk-meta-item" style="color: var(--accent-green);"><i class="fa-solid fa-shield-halved"></i> Verified Safe</span>
+      </div>
+      
+      <!-- Primary APK Download Button -->
+      <a href="netwerk.apk" download="NetWerk.apk" class="download-primary-btn">
+        <i class="fa-solid fa-download"></i> Download NetWerk APK
+      </a>
+    </section>
+
+    <!-- How to Install Section -->
+    <section class="guide-section">
+      <h2 class="section-title" style="margin-bottom: 0.5rem;"><i class="fa-solid fa-circle-info"></i> How to Install APK</h2>
+      <div class="steps-grid">
+        <div class="step-card">
+          <div class="step-number">1</div>
+          <div class="step-title">Download APK</div>
+          <p class="step-desc">Click the download button above to save the NetWerk APK file to your device.</p>
+        </div>
+        <div class="step-card">
+          <div class="step-number">2</div>
+          <div class="step-title">Allow Installation</div>
+          <p class="step-desc">If prompted, enable "Install from Unknown Sources" in your Android settings.</p>
+        </div>
+        <div class="step-card">
+          <div class="step-number">3</div>
+          <div class="step-title">Install & Open</div>
+          <p class="step-desc">Open the downloaded file from your browser downloads or file manager to install.</p>
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      <div class="footer-links">
+        <button class="footer-btn" data-modal="privacy">Privacy Policy</button>
+        <button class="footer-btn" data-modal="terms-use">Terms of Use</button>
+        <button class="footer-btn" data-modal="terms-conditions">Terms &amp; Conditions</button>
+      </div>
+      <p class="copyright">&copy; 2026 NetWerk. All rights reserved.</p>
+    </footer>
+  </div>
+
+  <!-- Modal -->
+  <div id="modal-overlay" class="modal-overlay hidden">
+    <div class="modal">
+      <button class="modal-close" aria-label="Close">&times;</button>
+      <h2 id="modal-title"></h2>
+      <div id="modal-content" class="modal-content"></div>
+    </div>
+  </div>
+
+  <script>
+    const modalData = {
+      privacy: {
+        title: "Privacy Policy",
+        content: "<p>Last updated: September 14, 2026</p><p>NetWerk is a simple directory of external social media links and mobile utility app. We do not require accounts and do not collect personal information such as names, email addresses, or login credentials.</p><h3>Third-Party Links</h3><p>When you click Open on any platform, you leave NetWerk and are subject to that platform's own privacy policy and terms.</p><h3>Cookies & Local Storage</h3><p>We may use essential local storage for basic functionality. We do not use tracking cookies for advertising.</p>"
+      },
+      "terms-use": {
+        title: "Terms of Use",
+        content: "<p>Last updated: September 14, 2026</p><p>By using NetWerk or downloading the application you agree to use it only for lawful purposes. NetWerk is an independent directory and application and is not affiliated with Meta, Google, ByteDance, Tencent, or Telegram. The service is provided as is.</p>"
+      },
+      "terms-conditions": {
+        title: "Terms & Conditions",
+        content: "<p>Last updated: September 14, 2026</p><p>Platform logos and names are trademarks of their owners and are used for identification only. NetWerk is not liable for content or practices on third-party platforms you open from this page or app.</p>"
+      }
+    };
+
+    const overlay = document.getElementById("modal-overlay");
+    const modalTitle = document.getElementById("modal-title");
+    const modalContent = document.getElementById("modal-content");
+
+    function openModal(key) {
+      const data = modalData[key];
+      if (!data) return;
+      modalTitle.textContent = data.title;
+      modalContent.innerHTML = data.content;
+      overlay.classList.remove("hidden");
+      document.body.style.overflow = "hidden";
+    }
+    function closeModal() {
+      overlay.classList.add("hidden");
+      document.body.style.overflow = "";
+    }
+    document.querySelectorAll(".footer-btn").forEach(function (btn) {
+      btn.addEventListener("click", function () { openModal(btn.dataset.modal); });
+    });
+    document.querySelector(".modal-close").addEventListener("click", closeModal);
+    overlay.addEventListener("click", function (e) { if (e.target === overlay) closeModal(); });
+    document.addEventListener("keydown", function (e) {
+      if (e.key === "Escape" && !overlay.classList.contains("hidden")) closeModal();
+    });
+  </script>
+</body>
+</html>
