@@ -4,7 +4,7 @@
   "description": "Quick access to your favorite social media platforms",
   "start_url": "https://kgolaganopoosa.github.io/NetWerk/",
   "display": "standalone",
-  "background_color": "#2563eb",
+  "background_color": "#FFFFFF",
   "theme_color": "#2563eb",
   "orientation": "portrait-primary",
   "icons": [
